@@ -2,9 +2,10 @@
   "name": "learning-nodejs",
   "version": "0.0.1",
   "description": "A project dedicated of Node.js learning.",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "build": "gulp"    
   },
   "keywords": [
     "learning",
@@ -16,5 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.2.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }

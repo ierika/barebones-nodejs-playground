@@ -1,4 +1,5 @@
 const fs = require('fs');
+const config = require('../config');
 
 
 class Controller {
@@ -36,17 +37,25 @@ class TemplateController extends Controller {
         }
     }
 
+    bind(content, context) {
+        for (let key in context) {
+            let pattern = new RegExp(`\\{\\{\\s*${key}\\s*\\}\\}`, "g");
+            content = content.replace(pattern, context[key]);
+        }
+        return content;
+    }
+
     render() {
-        const filePath = `./views/${this.getTemplate()}`;
+        const filePath = `${config.BASEDIR}/views/${this.getTemplate()}`;
 
         try {
             const fileContents = fs.readFileSync(filePath, 'utf8');
             this.res.writeHead(200, {'Content-Type': 'text/html'});
-            this.res.end(fileContents.toString());
+            this.res.end(this.bind(fileContents, this.getContext()));
         } catch(err) {
             this.res.writeHead(500, {'Content-Type': 'text/html'});
             this.res.end(`
-                <h1>Server Errror</h1>
+                <h1>Server Error</h1>
                 <p>${err.message}</p>
             `);
         }

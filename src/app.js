@@ -1,10 +1,11 @@
 const http = require('http');
-const router = require('./router.js');
-const config = require('./config.js').config;
-const logger = require('./logger.js');
+const routes = require('./routes').routes;
+const router = require('./core/router');
+const config = require('./config');
+const logger = require('./logger');
 
-const server = http.createServer(function (req, res) {
-    router.go(req, res);
+const server = http.createServer((req, res) => {
+    router.goTo(req, res, routes);
 }).listen(config.PORT);
 
 logger.success(`Server has been established at ` +

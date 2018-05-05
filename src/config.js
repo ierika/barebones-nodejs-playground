@@ -1,7 +1,7 @@
 const config = {
     PORT: 8000,
     BASEDIR: __dirname,
-    SITENAME: 'Learn Node JS',
+    SITENAME: 'Learn Node.js',
 };
 
-module.exports.config = config;
+module.exports = config;
