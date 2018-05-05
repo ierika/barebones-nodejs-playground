@@ -1,0 +1,20 @@
+{
+  "name": "learning-nodejs",
+  "version": "0.0.1",
+  "description": "A project dedicated of Node.js learning.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learning",
+    "javascript",
+    "node.js",
+    "express"
+  ],
+  "author": "Erika",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.2.4"
+  }
+}
